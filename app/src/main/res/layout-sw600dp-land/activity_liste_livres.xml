@@ -15,7 +15,7 @@
 
         <!-- Listview to display slider menu -->
         <ListView
-            android:layout_weight="3"
+            android:layout_weight="2.2"
             android:id="@+id/list_slidermenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -29,7 +29,7 @@
             android:id="@+id/frame_container"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="3"
+            android:layout_weight="3.5"
             />
         <LinearLayout
             android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:id="@+id/frame_container2"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="3.95"
+            android:layout_weight="4.25"
             />
     </LinearLayout>
 

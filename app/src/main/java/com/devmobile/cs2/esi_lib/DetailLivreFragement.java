@@ -26,7 +26,7 @@ public class DetailLivreFragement extends Fragment {
     private String auteur;
     private String categorie;
     private String annee;
-    private String description ;
+    private String description;
     ImageView iconLivre;
     TextView titreLivre;
     TextView auteurLivre;
@@ -34,8 +34,8 @@ public class DetailLivreFragement extends Fragment {
     TextView anneLivre;
     TextView descriptionLivre;
     EditText commentaire;
-    private LinearLayout listCommentaire,infoLivre;
-    ScrollView scrollView ;
+    private LinearLayout listCommentaire, infoLivre;
+    ScrollView scrollView;
     ImageButton ajouterCommentaire;
 
     public DetailLivreFragement() {
@@ -54,7 +54,7 @@ public class DetailLivreFragement extends Fragment {
         View v = inflater.inflate(R.layout.detail_livre_fragement, container, false);
 
         /// Recuperation du data passé par le précedent fragment
-        if( getArguments()!=null) {
+        if (getArguments() != null) {
             image = Integer.parseInt(getArguments().getString("image"));
             titre = getArguments().getString("titre");
             auteur = getArguments().getString("auteur");
@@ -89,13 +89,19 @@ public class DetailLivreFragement extends Fragment {
             listCommentaire = (LinearLayout) v.findViewById(R.id.listCommentaire);
 
             ajouterCommentaire.setOnClickListener(new View.OnClickListener() {
+
+                Typeface type = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/roboto_light.ttf");
+                Typeface type2 = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/neuropol.ttf");
+
                 @Override
                 public void onClick(View v) {
 
                     String commentToAdd = commentaire.getText().toString();
-                    if(commentToAdd.equals("")){
-                        Toast.makeText(getActivity().getBaseContext(),"Aucun commentaire à ajouter",Toast.LENGTH_SHORT);
-                    }else {
+                    if (commentToAdd.equals("")) {
+                        Toast.makeText(getActivity().getBaseContext(), "Aucun commentaire à ajouter", Toast.LENGTH_SHORT);
+                    } else {
                         TextView tx, date, user;
 
                         View view = v.inflate(v.getContext(), R.layout.commentaire, null);
@@ -103,7 +109,9 @@ public class DetailLivreFragement extends Fragment {
                         tx = (TextView) view.findViewById(R.id.description);
                         date = (TextView) view.findViewById(R.id.date);
                         user = (TextView) view.findViewById(R.id.userName);
-
+                        tx.setTypeface(type);
+                        date.setTypeface(type);
+                        user.setTypeface(type2);
                         user.setText("iheb chorfi");
                         tx.setText(commentToAdd);
                         date.setText(DateFormat.getDateInstance().format(new Date()));
@@ -129,15 +137,15 @@ public class DetailLivreFragement extends Fragment {
         return v;
     }
 
-    private void overrideFonts( final View v,Typeface tf) {
+    private void overrideFonts(final View v, Typeface tf) {
         try {
             if (v instanceof ViewGroup) {
                 ViewGroup vg = (ViewGroup) v;
                 for (int i = 0; i < vg.getChildCount(); i++) {
                     View child = vg.getChildAt(i);
-                    overrideFonts(child,tf);
+                    overrideFonts(child, tf);
                 }
-            } else if (v instanceof TextView ) {
+            } else if (v instanceof TextView) {
                 ((TextView) v).setTypeface(tf);
             }
         } catch (Exception e) {

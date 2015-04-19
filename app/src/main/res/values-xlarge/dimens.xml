@@ -5,7 +5,7 @@
     <dimen name="infoSize">20sp</dimen>
     <dimen name="descriptionSize">18sp</dimen>
     <dimen name="editTextSize">14sp</dimen>
-    <dimen name="nomCommentaireSize">18sp</dimen>
+    <dimen name="nomCommentaireSize">16sp</dimen>
     <dimen name="dateCommentaireSize">14sp</dimen>
-    <dimen name="commentaireSize">18sp</dimen>
+    <dimen name="commentaireSize">15sp</dimen>
 </resources>
