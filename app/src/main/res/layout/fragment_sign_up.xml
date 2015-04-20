@@ -44,6 +44,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/editText3"
+                    android:inputType="textPersonName"
                     android:layout_weight="65" />
             </LinearLayout>
             <LinearLayout
@@ -68,6 +69,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/editText4"
+                    android:inputType="textPersonName"
                     android:layout_weight="65" />
             </LinearLayout>
             <LinearLayout
@@ -115,6 +117,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/editText6"
+                    android:inputType="textPassword"
                     android:layout_weight="65" />
             </LinearLayout>
 
@@ -139,6 +142,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/editText7"
+                    android:inputType="textPassword"
                     android:layout_weight="65" />
             </LinearLayout>
 
@@ -159,19 +163,15 @@
                     android:layout_weight="35"
                     android:gravity="center_vertical" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                <Switch
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Homme"
-                    android:id="@+id/radioButton"
-                    android:checked="false" />
+                android:textOn="Femme"
+                    android:textOff="Homme"
+                    android:id="@+id/switch1"
+                    android:layout_weight="35"
+              />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Femme"
-                    android:id="@+id/radioButton2"
-                    android:checked="false" />
 
             </LinearLayout>
 
@@ -227,7 +227,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:gravity="right"
-        android:layout_weight="15"
+        android:layout_weight="10"
         android:layout_marginTop="10dp">
 
         <Button
