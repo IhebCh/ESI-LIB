@@ -50,6 +50,7 @@ public class MenuItemAdapter extends BaseAdapter{
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
         final ImageView favoris = (ImageView) convertView.findViewById(R.id.favoris);
+
         favoris.setTag(R.drawable.ic_favorite_empty_pressed);
         favoris.setOnClickListener(new View.OnClickListener() {
             @Override
