@@ -51,7 +51,20 @@ public class MenuItemAdapter extends BaseAdapter{
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-        TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
+        final ImageView favoris = (ImageView) convertView.findViewById(R.id.favoris);
+        favoris.setTag(R.drawable.ic_favorite_empty_pressed);
+        favoris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((Integer)v.getTag() == R.drawable.ic_favorite_empty_pressed) {
+                    v.setBackgroundResource(R.drawable.ic_favorite_full_pressed);
+                    v.setTag(R.drawable.ic_favorite_full_pressed);
+                }else {
+                    v.setBackgroundResource(R.drawable.ic_favorite_empty_pressed);
+                    v.setTag(R.drawable.ic_favorite_empty_pressed);
+                }
+            }
+        });
 
         imgIcon.setImageResource(NavMenuItems.get(position).getIcon());
         txtTitle.setText(NavMenuItems.get(position).getTitre());

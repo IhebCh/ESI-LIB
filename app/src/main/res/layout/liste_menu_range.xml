@@ -22,16 +22,21 @@
         android:layout_toRightOf="@id/icon"
         android:textColor="@color/list_menu_item_title"
         android:gravity="center_vertical"
+        android:text="qsdqsdqsdqs"
+        android:textSize="@dimen/abc_text_size_menu_material"
         android:paddingRight="40dp"
         android:paddingEnd="40dp"/>
 
-    <TextView android:id="@+id/counter"
+
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/counter_bg"
-        android:layout_alignParentRight="true"
+        android:id="@+id/favoris"
+        android:src="@drawable/ic_favorite_empty_pressed"
+
         android:layout_centerVertical="true"
-        android:layout_marginRight="8dp"
-        android:textColor="@color/counter_text_color"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
