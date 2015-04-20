@@ -12,9 +12,6 @@ import android.widget.TextView;
 import com.devmobile.cs2.esi_lib.Models.Livre;
 import com.devmobile.cs2.esi_lib.R;
 
-/**
- * Created by Ahmed-PC on 10-04-2015.
- */
 public class LivreAdapter extends ArrayAdapter<Livre>{
 
     Context context;

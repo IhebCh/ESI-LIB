@@ -14,9 +14,7 @@ import com.devmobile.cs2.esi_lib.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Ahmed-PC on 11-04-2015.
- */
+
 public class MenuItemAdapter extends BaseAdapter{
 
     private Context context;
