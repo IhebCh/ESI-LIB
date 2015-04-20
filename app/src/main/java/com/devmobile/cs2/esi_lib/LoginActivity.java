@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
-import com.tabs_swipe.R;
 
 public class LoginActivity extends FragmentActivity implements OnTabChangeListener, OnPageChangeListener {
 

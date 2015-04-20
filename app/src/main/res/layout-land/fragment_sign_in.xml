@@ -25,7 +25,7 @@
                 android:layout_height="135dp"
                 android:id="@+id/imageView"
                 android:layout_gravity="center"
-                android:src="@drawable/user"/>
+                android:src="@drawable/userlogin"/>
         </FrameLayout>
 
         <LinearLayout
