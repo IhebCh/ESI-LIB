@@ -66,7 +66,7 @@ public class LoginActivity extends FragmentActivity implements OnTabChangeListen
         mTabHost.setup();
 
         // TODO Put here your Tabs
-        LoginActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Sign-In").setIndicator("Sign-Ip"));
+        LoginActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Sign-In").setIndicator("Sign-In"));
         LoginActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Sign-Un").setIndicator("Sign-Up"));
         LoginActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("About").setIndicator("About"));
 

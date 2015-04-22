@@ -3,6 +3,8 @@ package com.devmobile.cs2.esi_lib;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,12 @@ import android.widget.ListView;
 import com.devmobile.cs2.esi_lib.Adapters.LivreAdapter;
 import com.devmobile.cs2.esi_lib.Models.Livre;
 
-public class ListeLivresFragement extends Fragment {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class ListeLivresFragement extends Fragment  {
+
+
 
     private Livre[] livre_math;
     private Livre[] livre_elec;
@@ -21,10 +28,14 @@ public class ListeLivresFragement extends Fragment {
     private Livre[] livre_base;
     private Livre[] livre_si;
     private Livre[] livre_tous;
-    private Livre[] livre_affiche;
+    public static ArrayList<Livre> livre_affiche ;
+    // private Livre[] livre_affiche;
     private int numCateg = 0;
     public View fragmentView;
-    ListView listLivreView;
+
+
+    public static ListView listLivreView;
+    LivreAdapter adapter ;
 
     public ListeLivresFragement() {
 
@@ -48,30 +59,33 @@ public class ListeLivresFragement extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+       /* searchView = (SearchView) getActivity().findViewById(R.id.action_search) ;
+        searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(this);
+        searchView.setSubmitButtonEnabled(false);*/
+
         init_data();
         switch (numCateg) {
             case 0:
-                livre_affiche = livre_tous;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_tous)) ;
                 break;
             case 1:
-                livre_affiche = livre_math;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_math)) ;
                 break;
             case 2:
-                livre_affiche = livre_elec;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_elec)) ;
                 break;
             case 3:
-                livre_affiche = livre_algo;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_algo)) ;
                 break;
             case 4:
-                livre_affiche = livre_base;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_base)) ;
                 break;
             case 5:
-                livre_affiche = livre_si;
+                livre_affiche =  new ArrayList<Livre>(Arrays.asList(livre_si)) ;
                 break;
         }
-        LivreAdapter adapter = new LivreAdapter(getActivity(), R.layout.liste_livres_range, livre_affiche);
-        // ListView listLivreView = (ListView) getActivity().findViewById(R.id.listLivreView);
-        //  ListView listLivreView = (ListView) ListeLivres.fragmentListeLivres.getActivity().findViewById(R.id.listLivreView);
+        adapter = new LivreAdapter(getActivity(), R.layout.liste_livres_range, livre_affiche);
         listLivreView = (ListView) fragmentView.findViewById(R.id.listLivre);
         listLivreView.setAdapter(adapter);
         listLivreView.setOnItemClickListener(new ListLivreClickListener());
@@ -87,17 +101,15 @@ public class ListeLivresFragement extends Fragment {
         }
 
         private void displayDetailLivre(int position) {
-           /* listLivreView.setItemChecked(position,true);
-            listLivreView.setSelection(position);*/
             // update the main content by replacing fragments
             Fragment fragment = null;
             Bundle bundle = new Bundle();
-            bundle.putString("image", ((Integer) livre_affiche[position].getImage()).toString());
-            bundle.putString("titre", livre_affiche[position].getTitre());
-            bundle.putString("auteur", livre_affiche[position].getAuteur());
-            bundle.putString("categorie", livre_affiche[position].getCategorie());
-            bundle.putString("annee", livre_affiche[position].getAnnee());
-            bundle.putString("description", livre_affiche[position].getDescreption());
+            bundle.putString("image", ((Integer) livre_affiche.get(position).getImage()).toString());
+            bundle.putString("titre", livre_affiche.get(position).getTitre());
+            bundle.putString("auteur", livre_affiche.get(position).getAuteur());
+            bundle.putString("categorie", livre_affiche.get(position).getCategorie());
+            bundle.putString("annee", livre_affiche.get(position).getAnnee());
+            bundle.putString("description", livre_affiche.get(position).getDescreption());
             ListeLivres.fragmentDetailLivre = new DetailLivreFragement();
             ListeLivres.fragmentDetailLivre.setArguments(bundle);
             if (ListeLivres.fragmentDetailLivre != null) {
@@ -107,11 +119,14 @@ public class ListeLivresFragement extends Fragment {
                     // Log.e("landscape", "rahi landscape") ;
                     fragmentManager.beginTransaction()
                             .replace(R.id.frame_container2, ListeLivres.fragmentDetailLivre).commit();
+
+
                 } else {
                     // Log.e("landscape", "rahi mahihce landscape") ;
                     fragmentManager.beginTransaction()
                             .replace(R.id.frame_container, ListeLivres.fragmentDetailLivre).commit();
-                    ;
+                    ListeLivres.pileFragment.push(ListeLivres.fragmentListeLivres) ;
+
                 }
 
             } else {
@@ -123,7 +138,7 @@ public class ListeLivresFragement extends Fragment {
 
     public void init_data() {
 
-
+//        livre_math1.add(1,new Livre(R.drawable.math1, "Analyse numérique", "Eric Canon", "Mathématique", "2012", "Est un traité de mathématiques du groupe Nicolas Bourbaki, signé N. Bourbaki et composé de dix livres (divisés chacun en un ou plusieurs chapitres). Les premiers tomes furent publiés par les éditions Hermann à partir de 1940 d'abord sous forme de fascicules, puis sous forme de volumes reliés"));
         livre_math = new Livre[]
                 {
                         new Livre(R.drawable.math1, "Analyse numérique", "Eric Canon", "Mathématique", "2012", "Est un traité de mathématiques du groupe Nicolas Bourbaki, signé N. Bourbaki et composé de dix livres (divisés chacun en un ou plusieurs chapitres). Les premiers tomes furent publiés par les éditions Hermann à partir de 1940 d'abord sous forme de fascicules, puis sous forme de volumes reliés"),
@@ -245,4 +260,5 @@ public class ListeLivresFragement extends Fragment {
                 };
 
     }
+
 }

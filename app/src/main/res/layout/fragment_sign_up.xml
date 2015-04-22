@@ -159,19 +159,25 @@
                     android:layout_weight="35"
                     android:gravity="center_vertical" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Homme"
-                    android:id="@+id/radioButton"
-                    android:checked="false" />
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Femme"
-                    android:id="@+id/radioButton2"
-                    android:checked="false" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Femme"
+                        android:id="@+id/radioButton2"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Homme"
+                        android:id="@+id/radioButton"
+                        android:checked="false" />
+                </RadioGroup>
 
             </LinearLayout>
 

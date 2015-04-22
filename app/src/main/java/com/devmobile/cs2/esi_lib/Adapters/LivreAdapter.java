@@ -12,13 +12,16 @@ import android.widget.TextView;
 import com.devmobile.cs2.esi_lib.Models.Livre;
 import com.devmobile.cs2.esi_lib.R;
 
+import java.util.ArrayList;
+
 public class LivreAdapter extends ArrayAdapter<Livre>{
 
     Context context;
     int layoutResourceId;
-    Livre data[] = null;
+    ArrayList<Livre> data ;
 
-    public LivreAdapter(Context context, int layoutResourceId, Livre[] data) {
+
+    public LivreAdapter(Context context, int layoutResourceId ,ArrayList<Livre>data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -49,7 +52,7 @@ public class LivreAdapter extends ArrayAdapter<Livre>{
             holder = (LivreHolder)row.getTag();
         }
 
-        Livre Livre = data[position];
+        Livre Livre = data.get(position);
 
         holder.imageView.setImageResource(Livre.getImage());
         holder.tvTitre.setText(Livre.getTitre());

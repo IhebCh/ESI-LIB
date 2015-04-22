@@ -11,6 +11,9 @@ public class Livre {
     private String categorie ;
     private String annee ;
     private String descreption ;
+    public Livre(){
+
+    }
 
     public Livre(int image ,String titre,String auteur,String categorie,String annee,String descreption ){
         this.setImage(image);
@@ -68,4 +71,31 @@ public class Livre {
     public void setDescreption(String descreption) {
         this.descreption = descreption;
     }
+
+    public boolean rechercheMotClé(String word){
+        if (this.titre.toLowerCase().indexOf(word.toLowerCase()) != -1
+                || this.categorie.toLowerCase().indexOf(word.toLowerCase()) != -1
+                || this.auteur.toLowerCase().indexOf(word.toLowerCase()) != -1
+                || this.descreption.toLowerCase().indexOf(word.toLowerCase()) != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean rechercheMotsClés(String sentence){
+        String[] words = sentence.split("\\s+");
+        boolean bool = true;
+        int i=0;
+        while (i<words.length && bool==true){
+            if (this.rechercheMotClé(words[i])==false) {
+                bool=false;
+            }
+            else {
+                i++;
+            }
+        }
+        return bool;
+    }
 }
+
