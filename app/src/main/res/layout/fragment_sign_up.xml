@@ -38,7 +38,9 @@
                     android:text="Nom"
                     android:id="@+id/textView2"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textIsSelectable="false" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -62,7 +64,8 @@
                     android:text="Prenom"
                     android:id="@+id/textView4"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -85,7 +88,8 @@
                     android:text="Email"
                     android:id="@+id/textView5"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -109,7 +113,9 @@
                     android:text="mot de passe"
                     android:id="@+id/textView6"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:singleLine="true" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -133,7 +139,9 @@
                     android:text="Mot de passe"
                     android:id="@+id/textView7"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:singleLine="true" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -157,21 +165,29 @@
                     android:text="Sexe :"
                     android:id="@+id/textView3"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Homme"
-                    android:id="@+id/radioButton"
-                    android:checked="false" />
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="60">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Femme"
-                    android:id="@+id/radioButton2"
-                    android:checked="false" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Homme"
+                        android:id="@+id/radioButton"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Femme"
+                        android:id="@+id/radioButton2"
+                        android:checked="false" />
+
+                </RadioGroup>
 
             </LinearLayout>
 
@@ -208,7 +224,8 @@
                     android:text="Captcha"
                     android:id="@+id/textView8"
                     android:layout_weight="35"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -234,7 +251,7 @@
             android:layout_height="wrap_content"
             android:text="Valider"
             android:id="@+id/button2"
-            android:background="#009688"
+            android:background="@android:drawable/toast_frame"
             android:textColor="#FFFFFF"
             android:layout_gravity="bottom" />
     </LinearLayout>

@@ -52,14 +52,18 @@ public class MenuItemAdapter extends BaseAdapter{
         final ImageView favoris = (ImageView) convertView.findViewById(R.id.favoris);
 
         favoris.setTag(R.drawable.ic_favorite_empty_pressed);
+
         favoris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if ((Integer)v.getTag() == R.drawable.ic_favorite_empty_pressed) {
-                    v.setBackgroundResource(R.drawable.ic_favorite_full_pressed);
+                 //   v.invalidate();
+                    favoris.setImageResource(R.drawable.ic_favorite_full_pressed);
+
                     v.setTag(R.drawable.ic_favorite_full_pressed);
                 }else {
-                    v.setBackgroundResource(R.drawable.ic_favorite_empty_pressed);
+                //    v.invalidate();
+                    favoris.setImageResource(R.drawable.ic_favorite_empty_pressed);
                     v.setTag(R.drawable.ic_favorite_empty_pressed);
                 }
             }
@@ -69,5 +73,7 @@ public class MenuItemAdapter extends BaseAdapter{
         txtTitle.setText(NavMenuItems.get(position).getTitre());
         return convertView;
     }
+
+
 
 }

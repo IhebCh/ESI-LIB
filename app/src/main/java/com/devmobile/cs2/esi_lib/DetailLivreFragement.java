@@ -1,5 +1,6 @@
 package com.devmobile.cs2.esi_lib;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -45,6 +46,9 @@ public class DetailLivreFragement extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
 
     }
 
@@ -135,6 +139,36 @@ public class DetailLivreFragement extends Fragment {
             });
         }
         return v;
+    }
+
+    public interface OnFragmentInteractionListener {
+        public void showDrawerToggle(boolean showDrawerToggle);
+    }
+
+    private OnFragmentInteractionListener mListener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            this.mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(ListeLivres.isPhone || !ListeLivres.isLand)
+            mListener.showDrawerToggle(false);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener.showDrawerToggle(true);
     }
 
     private void overrideFonts(final View v, Typeface tf) {

@@ -13,7 +13,7 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_categ</item>
+        <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_math</item>
         <item>@drawable/ic_elec</item>
         <item>@drawable/ic_algo</item>
@@ -23,7 +23,7 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item>Accueil</item>
+        <item>Tous les livres</item>
         <item>Mathèmatique</item>
         <item>Electronique</item>
         <item>Algorithmique</item>
@@ -33,5 +33,6 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_detail_livre">DetailLivre</string>
+    <string name="action_return">return</string>
 
 </resources>

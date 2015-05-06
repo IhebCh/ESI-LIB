@@ -1,10 +1,8 @@
 package com.devmobile.cs2.esi_lib;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +27,7 @@ public class ListeLivresFragement extends Fragment  {
     private Livre[] livre_si;
     private Livre[] livre_tous;
     public static ArrayList<Livre> livre_affiche ;
-    // private Livre[] livre_affiche;
+   // private Livre[] livre_affiche;
     private int numCateg = 0;
     public View fragmentView;
 
@@ -114,6 +112,7 @@ public class ListeLivresFragement extends Fragment  {
             ListeLivres.fragmentDetailLivre.setArguments(bundle);
             if (ListeLivres.fragmentDetailLivre != null) {
                 FragmentManager fragmentManager = getFragmentManager();
+             //   ListeLivres.mDrawerLayout.setDrawerListener(ListeLivres.mDrawerToggle2);
 
                 if (!ListeLivres.isPhone && ListeLivres.isLand) {
                     // Log.e("landscape", "rahi landscape") ;

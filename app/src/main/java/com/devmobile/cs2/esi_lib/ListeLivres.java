@@ -10,13 +10,13 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.devmobile.cs2.esi_lib.Adapters.LivreAdapter;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 
-public class ListeLivres extends ActionBarActivity implements SearchView.OnQueryTextListener {
+public class ListeLivres extends ActionBarActivity implements SearchView.OnQueryTextListener, DetailLivreFragement.OnFragmentInteractionListener {
 
 
     private DrawerLayout mDrawerLayout;
@@ -51,17 +51,19 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
     public static boolean isLand = false;
     public static Fragment fragmentListeLivres;
     public static Fragment fragmentDetailLivre;
+    public static boolean canReturn=false;
+
     FragmentManager fragmentManager = getFragmentManager();
 
     private SearchView searchView;
-    private ArrayList<Livre> livre_affiche ;
-    private ListView listView ;
-    public static Stack<Fragment> pileFragment ;
+    private ArrayList<Livre> livre_affiche;
+    private ListView listView;
+    public static Stack<Fragment> pileFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        pileFragment =new Stack<Fragment>() ;
+        pileFragment = new Stack<Fragment>();
         super.onCreate(savedInstanceState);
         isPhone(this);
         isLand();
@@ -173,23 +175,25 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
         //searchView.setOnQueryTextListener(this);
     }
 
-    public ArrayList<Livre> filtredListBooks(String query){
+    public ArrayList<Livre> filtredListBooks(String query) {
         ArrayList<Livre> filtredList = new ArrayList<Livre>();
-        livre_affiche = ListeLivresFragement.livre_affiche ;
-        if(livre_affiche==null){
-            Log.e("null","livreaffiche null") ;
+        livre_affiche = ListeLivresFragement.livre_affiche;
+        if (livre_affiche == null) {
+            Log.e("null", "livreaffiche null");
         }
-        for (int i=0;i<livre_affiche.size();i++){
-            if (livre_affiche.get(i).rechercheMotsClés(query)) filtredList.add(livre_affiche.get(i));
+        for (int i = 0; i < livre_affiche.size(); i++) {
+            if (livre_affiche.get(i).rechercheMotsClés(query))
+                filtredList.add(livre_affiche.get(i));
         }
         return filtredList;
     }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
-        Log.i("aa","recherche") ;
+
         ArrayList<Livre> list = filtredListBooks(query);
-        LivreAdapter monAdapteteur = new LivreAdapter(this,R.layout.liste_livres_range,list);
-        listView = ListeLivresFragement.listLivreView ;
+        LivreAdapter monAdapteteur = new LivreAdapter(this, R.layout.liste_livres_range, list);
+        listView = ListeLivresFragement.listLivreView;
         listView.setAdapter(monAdapteteur);
         // listView.setOnItemClickListener(this);
         return false;
@@ -199,22 +203,23 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
     public boolean onQueryTextChange(String newText) {
 
         ArrayList<Livre> list = filtredListBooks(newText);
-        LivreAdapter monAdapteteur = new LivreAdapter(this,R.layout.liste_livres_range,list);
-        listView = ListeLivresFragement.listLivreView ;
+        LivreAdapter monAdapteteur = new LivreAdapter(this, R.layout.liste_livres_range, list);
+        listView = ListeLivresFragement.listLivreView;
         listView.setAdapter(monAdapteteur);
-        // listView.setOnItemClickListener(this);
         return false;
     }
+
+
 
     /**
      * Slide menu item click listener
      */
-    private class SlideMenuClickListener implements
-            ListView.OnItemClickListener {
+    private class SlideMenuClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             // display view for selected nav drawer item
+        //    view.setBackgroundColor(0xFF0000);
             displayView(position);
         }
     }
@@ -268,8 +273,8 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
             // FragmentManager fragmentManager = getFragmentManager() ;
             //  FragmentManager fragmentManager = getFragmentManager();
             //  FragmentManager fragmentManager = getFragmentManager();
-            livre_affiche = ListeLivresFragement.livre_affiche ;
-            listView = ListeLivresFragement.listLivreView ;
+            livre_affiche = ListeLivresFragement.livre_affiche;
+            listView = ListeLivresFragement.listLivreView;
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_container, fragmentListeLivres).commit();
 
@@ -296,7 +301,7 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_liste_livres, menu);
-        SearchManager searchManager = (SearchManager) getSystemService( Context.SEARCH_SERVICE );
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -307,9 +312,24 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
     }
 
     @Override
+    public void showDrawerToggle(boolean showDrawerToggle) {
+
+        if (showDrawerToggle == false) {
+            mDrawerToggle.setDrawerIndicatorEnabled(showDrawerToggle);
+            mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            canReturn=true;
+        } else {
+            mDrawerToggle.setDrawerIndicatorEnabled(showDrawerToggle);
+            mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
+            canReturn=false ;
+
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // toggle nav drawer on selecting action bar app icon/title
-        if (isPhone) {
+        if (isPhone ) {
             if (mDrawerToggle.onOptionsItemSelected(item)) {
                 return true;
             }
@@ -317,8 +337,15 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
 
         // Handle action bar actions click
         switch (item.getItemId()) {
+            case  android.R.id.home :
+         if(canReturn)
+                onBackPressed();
+                // mDrawerToggle.syncState();
+                return true;
+
             case R.id.action_settings:
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -382,7 +409,7 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
 
     @Override
     public void onBackPressed() {
-        if ( !pileFragment.isEmpty() && pileFragment.pop()!=null) {
+        if (!pileFragment.isEmpty() && pileFragment.pop() != null) {
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_container, fragmentListeLivres).commit();
 
