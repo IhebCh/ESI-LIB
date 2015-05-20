@@ -19,6 +19,7 @@ public class MenuItemAdapter extends BaseAdapter{
 
     private Context context;
     private ArrayList<NavMenuItem> NavMenuItems;
+    public static int index =0 ;
 
     public MenuItemAdapter(Context context, ArrayList<NavMenuItem> NavMenuItems){
         this.context = context;
@@ -42,6 +43,7 @@ public class MenuItemAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
+            index++;
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.liste_menu_range, null);
@@ -51,23 +53,31 @@ public class MenuItemAdapter extends BaseAdapter{
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
         final ImageView favoris = (ImageView) convertView.findViewById(R.id.favoris);
 
-        favoris.setTag(R.drawable.ic_favorite_empty_pressed);
+        if(index==7){
+            favoris.setVisibility(View.INVISIBLE);
 
-        favoris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ((Integer)v.getTag() == R.drawable.ic_favorite_empty_pressed) {
-                 //   v.invalidate();
-                    favoris.setImageResource(R.drawable.ic_favorite_full_pressed);
+        }else{
+            favoris.setTag(R.drawable.ic_favorite_empty_pressed);
 
-                    v.setTag(R.drawable.ic_favorite_full_pressed);
-                }else {
-                //    v.invalidate();
-                    favoris.setImageResource(R.drawable.ic_favorite_empty_pressed);
-                    v.setTag(R.drawable.ic_favorite_empty_pressed);
+
+            favoris.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if ((Integer)v.getTag() == R.drawable.ic_favorite_empty_pressed) {
+                        //   v.invalidate();
+                        favoris.setImageResource(R.drawable.ic_favorite_full_pressed);
+
+                        v.setTag(R.drawable.ic_favorite_full_pressed);
+                    }else {
+                        //    v.invalidate();
+                        favoris.setImageResource(R.drawable.ic_favorite_empty_pressed);
+                        v.setTag(R.drawable.ic_favorite_empty_pressed);
+                    }
                 }
-            }
-        });
+            });
+
+        }
+
 
         imgIcon.setImageResource(NavMenuItems.get(position).getIcon());
         txtTitle.setText(NavMenuItems.get(position).getTitre());

@@ -10,13 +10,13 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.devmobile.cs2.esi_lib.Adapters.LivreAdapter;
@@ -100,6 +100,8 @@ public class ListeLivres extends ActionBarActivity implements SearchView.OnQuery
         navDrawerItems.add(new NavMenuItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1), "10"));
         // si
         navDrawerItems.add(new NavMenuItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), "10"));
+
+        navDrawerItems.add(new NavMenuItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1), "10"));
 
 
         // Recycle the typed array

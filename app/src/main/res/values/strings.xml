@@ -19,6 +19,7 @@
         <item>@drawable/ic_algo</item>
         <item>@drawable/ic_base</item>
         <item>@drawable/ic_si</item>
+        <item>@drawable/logout</item>
     </array>
 
     <!-- Nav Drawer Menu Items -->
@@ -29,6 +30,8 @@
         <item>Algorithmique</item>
         <item>Base de données</item>
         <item>Système d\'information</item>
+        <item>Déconnecter</item>
+
     </string-array>
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>

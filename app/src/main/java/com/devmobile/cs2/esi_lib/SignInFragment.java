@@ -24,6 +24,7 @@ public class SignInFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 		return rootView;

@@ -81,6 +81,7 @@
                 android:background="@android:drawable/toast_frame"
                 android:textColor="#FFFFFF"
                 android:elevation="20dp"/>
+
         </FrameLayout>
 
         <FrameLayout
